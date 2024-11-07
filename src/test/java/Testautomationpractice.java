@@ -33,9 +33,13 @@ public class Testautomationpractice {
 
             WebElement Textarea=driver.findElement(By.xpath("//textarea[@id='textarea']"));
             Textarea.sendKeys("No:111/B,Thammita,Makevita");
-
-
         }
+        @Test
+        public void CheckRadioButtons(){
+            WebElement RadioButton= driver.findElement(By.id("male"));
+            RadioButton.click();
+        }
+
 
 
 }
