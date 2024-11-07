@@ -39,6 +39,11 @@ public class Testautomationpractice {
             WebElement RadioButton= driver.findElement(By.id("male"));
             RadioButton.click();
         }
+        @Test
+        public void CheckCheckBoxes(){
+            WebElement Checkbox= driver.findElement(By.id("sunday"));
+            Checkbox.click();
+        }
 
 
 
