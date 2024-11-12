@@ -2,8 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class Testautomationpractice {
         WebDriver driver;
@@ -60,6 +63,18 @@ public class Testautomationpractice {
     public void CheckRadioButt(){
         WebElement RadioButton=  driver.findElement(By.id("male"));
         RadioButton.click();;
+    }
+
+    //Check Drop Down
+    @Test
+    public void CheckDropDown() throws InterruptedException {
+        WebElement dropdown=   driver.findElement(By.xpath("//select[@id='country']"));
+        Select select=new Select(dropdown);
+        select.selectByIndex(1);
+        Thread.sleep(3000);
+        select.selectByIndex(3);
+        Thread.sleep(3000);
+        dropdown.sendKeys("china");
     }
 
 
