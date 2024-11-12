@@ -55,7 +55,12 @@ public class Testautomationpractice {
 
     }
 
-
+  //Check Radio Buttons
+    @Test
+    public void CheckRadioButt(){
+        WebElement RadioButton=  driver.findElement(By.id("male"));
+        RadioButton.click();;
+    }
 
 
 }
