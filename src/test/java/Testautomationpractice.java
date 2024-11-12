@@ -14,7 +14,7 @@ public class Testautomationpractice {
             driver.get("https://testautomationpractice.blogspot.com/");
         }
         @Test
-
+  //Check  Textbox
     public void CheckGUIElements(){
 
             //Enter Name
@@ -34,16 +34,27 @@ public class Testautomationpractice {
             WebElement Textarea=driver.findElement(By.xpath("//textarea[@id='textarea']"));
             Textarea.sendKeys("No:111/B,Thammita,Makevita");
         }
+        //Check radio button
         @Test
         public void CheckRadioButtons(){
             WebElement RadioButton= driver.findElement(By.id("male"));
             RadioButton.click();
         }
+        //Check checkboxes
         @Test
         public void CheckCheckBoxes(){
             WebElement Checkbox= driver.findElement(By.id("sunday"));
             Checkbox.click();
         }
+
+        //Check TestBox
+    @Test
+    public void checkTextBox(){
+        WebElement TextBox= driver.findElement(By.id("textarea"));
+        TextBox.sendKeys("No:111/B,Thammita,Makevita");
+
+    }
+
 
 
 
