@@ -89,5 +89,17 @@ public class Testautomationpractice {
         Thread.sleep(3000);
     }
 
+    //Pick Date
+    @Test
+    public void PickDate() throws InterruptedException {
+        WebElement DatePicker1 =   driver.findElement(By.xpath("//input[@id='datepicker']"));
+        DatePicker1.sendKeys("10/10/2024");
+        Thread.sleep(3000);
+        WebElement DatePicker2=driver.findElement(By.id("txtDate"));
+        DatePicker2.sendKeys("2023/10/23");
+
+
+    }
+
 
 }
