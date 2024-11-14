@@ -92,14 +92,20 @@ public class Testautomationpractice {
     //Pick Date
     @Test
     public void PickDate() throws InterruptedException {
-        WebElement DatePicker1 =   driver.findElement(By.xpath("//input[@id='datepicker']"));
+        WebElement DatePicker1 = driver.findElement(By.xpath("//input[@id='datepicker']"));
         DatePicker1.sendKeys("10/10/2024");
         Thread.sleep(3000);
-        WebElement DatePicker2=driver.findElement(By.id("txtDate"));
+        WebElement DatePicker2 = driver.findElement(By.id("txtDate"));
         DatePicker2.sendKeys("2023/10/23");
-
-
     }
+
+    //Upload File
+    @Test
+ public void uploadFile(){
+            String path=("C:\\Users\\vinushi\\Downloads\\flower.jpg");
+            WebElement uploadFile=driver.findElement(By.id("singleFileInput"));
+            uploadFile.sendKeys(path);
+ }
 
 
 }
