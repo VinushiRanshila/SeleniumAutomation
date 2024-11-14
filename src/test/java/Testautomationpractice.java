@@ -75,6 +75,18 @@ public class Testautomationpractice {
         select.selectByIndex(3);
         Thread.sleep(3000);
         dropdown.sendKeys("china");
+
+        WebElement Colors=driver.findElement(By.id("colors"));
+        Select select1=new Select(Colors);
+        select1.selectByIndex(1);
+        Thread.sleep(3000);
+        select1.selectByIndex(2);
+
+
+        WebElement Animal=driver.findElement(By.id("animals"));
+        Select select2=new Select(Animal);
+        select2.selectByIndex(1);
+        Thread.sleep(3000);
     }
 
 
