@@ -108,13 +108,12 @@ public class Testautomationpractice {
  }
  //Upload MultipleFiles
  @Test
- public void UploadMultipleFile(){
-     String path1=("C:\\Users\\vinushi\\Downloads\\flower.jpg");
-     String path2=("C:\\Users\\vinushi\\Downloads\\flower1.jpg");
-     String path3=("C:\\Users\\vinushi\\Downloads\\flower2.jpg");
-     WebElement UploadMultipleFiles=driver.findElement(By.id("multipleFilesInput"));
+ public void UploadMultipleFile() {
+     String path1 = ("C:\\Users\\vinushi\\Downloads\\flower.jpg");
+     String path2 = ("C:\\Users\\vinushi\\Downloads\\flower1.jpg");
+     String path3 = ("C:\\Users\\vinushi\\Downloads\\flower2.jpg");
+     WebElement UploadMultipleFiles = driver.findElement(By.id("multipleFilesInput"));
      UploadMultipleFiles.sendKeys(path1 + "\n" + path2 + "\n" + path3);
-
  }
 
 
