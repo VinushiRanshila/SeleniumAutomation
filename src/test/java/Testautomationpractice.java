@@ -116,5 +116,76 @@ public class Testautomationpractice {
      UploadMultipleFiles.sendKeys(path1 + "\n" + path2 + "\n" + path3);
  }
 
+ //Test Static Table
+    @Test
+    public void TestStaticTable(){
+         int HeadsCount= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th")).size();
+         System.out.println("Number of TableHeads : " + HeadsCount);
+
+        String TableValue=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]")).getText();
+        System.out.println("Value is: " + TableValue);
+
+        //Row Count in table
+       int RowCount= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr")).size();
+       System.out.println("Number of Rows: " + RowCount);
+
+       //Column Count in the table
+        int ColumnCount= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th")).size();
+        System.out.println("Column Count is " + ColumnCount);
+    }
+//Pagination WebTable
+    @Test
+     public void paginationTable() throws InterruptedException {
+            int  Pagitabcolumns=driver.findElements(By.xpath("//table[@id='productTable']/thead/tr/th")).size();
+            System.out.println("Number of Table Columns: " +  Pagitabcolumns);
+
+            int Pagitabrows=driver.findElements(By.xpath("//table[@id='productTable']/tbody/tr")).size();
+            System.out.println("Number of Rows :  " + Pagitabrows);
+
+
+            //Retrieve all the data from table
+
+        for(int i=1;i< Pagitabrows;i++){//rows
+            for(int j=1; j< Pagitabcolumns;j++){
+               String tbldata= driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td["+j+"]")).getText();
+               System.out.println(tbldata + " ");
+            }
+            System.out.println();
+        }
+
+        //Print id and name
+
+        for(int i=1;i<=Pagitabrows;i++){
+            String TableId= driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[1]")).getText();
+            String ProductName=driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[2]")).getText();
+            System.out.println("Table id : " + TableId + "Product Name is: " +  ProductName );
+
+        if(ProductName.equals("Product 3")){
+           String productPrice= driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[3]")).getText();
+           System.out.println(ProductName + " Price is : " +productPrice );
+           break;
+        }
+
+        }
+
+        //Select All checkBoxes
+             int pagecount= driver.findElements(By.xpath("//ul[@id='pagination']/li")).size();
+             List<WebElement> pages= driver.findElements(By.xpath("//ul[@id='pagination']/li"));
+
+             for(int k=0;k<pagecount;k++){
+                 pages.get(k).click();
+                 Thread.sleep(1000);
+                 for(int i=1;i<=Pagitabcolumns;i++){
+                     boolean att=driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[4]/input")).isSelected();
+                     if(!att){
+                         driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[4]/input")).click();
+                         Thread.sleep(3000);
+                     }
+                 }
+             }
+
+    //
+
+     }
 
 }
