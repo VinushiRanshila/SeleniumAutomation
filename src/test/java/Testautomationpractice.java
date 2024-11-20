@@ -9,82 +9,87 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class Testautomationpractice {
-        WebDriver driver;
-        @BeforeMethod
-        public void TestPage(){
-            driver=new ChromeDriver();
-            driver.manage().window().maximize();
-            driver.get("https://testautomationpractice.blogspot.com/");
-        }
-        @Test
-  //Check  Textbox
-    public void CheckGUIElements(){
+    WebDriver driver;
 
-            //Enter Name
-            WebElement Name=driver.findElement(By.xpath("//input[@id='name']"));
-            Name.sendKeys("Praveena");
+    @BeforeMethod
+    public void TestPage() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://testautomationpractice.blogspot.com/");
+    }
 
-            //Enter Email
-            WebElement Email=driver.findElement(By.xpath("//input[@id='email']"));
-            Email.sendKeys("Pree@gmail.com");
-
-            //Enter Phone
-            WebElement Phone= driver.findElement(By.xpath("//input[@id='phone']"));
-            Phone.sendKeys("0761001236");
-
-            //Enter Address
-
-            WebElement Textarea=driver.findElement(By.xpath("//textarea[@id='textarea']"));
-            Textarea.sendKeys("No:111/B,Thammita,Makevita");
-        }
-        //Check radio button
-        @Test
-        public void CheckRadioButtons(){
-            WebElement RadioButton= driver.findElement(By.id("male"));
-            RadioButton.click();
-        }
-        //Check checkboxes
-        @Test
-        public void CheckCheckBoxes(){
-            WebElement Checkbox= driver.findElement(By.id("sunday"));
-            Checkbox.click();
-        }
-
-        //Check TestBox
     @Test
-    public void checkTextBox(){
-        WebElement TextBox= driver.findElement(By.id("textarea"));
+    //Check  Textbox
+    public void CheckGUIElements() {
+
+        //Enter Name
+        WebElement Name = driver.findElement(By.xpath("//input[@id='name']"));
+        Name.sendKeys("Praveena");
+
+        //Enter Email
+        WebElement Email = driver.findElement(By.xpath("//input[@id='email']"));
+        Email.sendKeys("Pree@gmail.com");
+
+        //Enter Phone
+        WebElement Phone = driver.findElement(By.xpath("//input[@id='phone']"));
+        Phone.sendKeys("0761001236");
+
+        //Enter Address
+
+        WebElement Textarea = driver.findElement(By.xpath("//textarea[@id='textarea']"));
+        Textarea.sendKeys("No:111/B,Thammita,Makevita");
+    }
+
+    //Check radio button
+    @Test
+    public void CheckRadioButtons() {
+        WebElement RadioButton = driver.findElement(By.id("male"));
+        RadioButton.click();
+    }
+
+    //Check checkboxes
+    @Test
+    public void CheckCheckBoxes() {
+        WebElement Checkbox = driver.findElement(By.id("sunday"));
+        Checkbox.click();
+    }
+
+    //Check TestBox
+    @Test
+    public void checkTextBox() {
+        WebElement TextBox = driver.findElement(By.id("textarea"));
         TextBox.sendKeys("No:111/B,Thammita,Makevita");
 
     }
 
-  //Check Radio Buttons
+    //Check Radio Buttons
     @Test
-    public void CheckRadioButt(){
-        WebElement RadioButton=  driver.findElement(By.id("male"));
-        RadioButton.click();;
+    public void CheckRadioButt() {
+        WebElement RadioButton = driver.findElement(By.id("male"));
+        RadioButton.click();
+        ;
     }
 
     //Check Drop Down
     @Test
     public void CheckDropDown() throws InterruptedException {
-        WebElement dropdown=   driver.findElement(By.xpath("//select[@id='country']"));
-        Select select=new Select(dropdown);
+        WebElement dropdown = driver.findElement(By.xpath("//select[@id='country']"));
+        Select select = new Select(dropdown);
         select.selectByIndex(1);
         Thread.sleep(3000);
         select.selectByIndex(3);
         Thread.sleep(3000);
         dropdown.sendKeys("china");
 
-        WebElement Colors=driver.findElement(By.id("colors"));
-        Select select1=new Select(Colors);
+        WebElement Colors = driver.findElement(By.id("colors"));
+        Select select1 = new Select(Colors);
         select1.selectByIndex(1);
         Thread.sleep(3000);
         select1.selectByIndex(2);
 
 
-        WebElement Animal=driver.findElement(By.id("animals"));
-        Select select2=new Select(Animal);
+        WebElement Animal = driver.findElement(By.id("animals"));
+        Select select2 = new Select(Animal);
         select2.selectByIndex(1);
         Thread.sleep(3000);
     }
@@ -101,91 +106,145 @@ public class Testautomationpractice {
 
     //Upload File
     @Test
- public void uploadFile(){
-            String path=("C:\\Users\\vinushi\\Downloads\\flower.jpg");
-            WebElement uploadFile=driver.findElement(By.id("singleFileInput"));
-            uploadFile.sendKeys(path);
- }
- //Upload MultipleFiles
- @Test
- public void UploadMultipleFile() {
-     String path1 = ("C:\\Users\\vinushi\\Downloads\\flower.jpg");
-     String path2 = ("C:\\Users\\vinushi\\Downloads\\flower1.jpg");
-     String path3 = ("C:\\Users\\vinushi\\Downloads\\flower2.jpg");
-     WebElement UploadMultipleFiles = driver.findElement(By.id("multipleFilesInput"));
-     UploadMultipleFiles.sendKeys(path1 + "\n" + path2 + "\n" + path3);
- }
+    public void uploadFile() {
+        String path = ("C:\\Users\\vinushi\\Downloads\\flower.jpg");
+        WebElement uploadFile = driver.findElement(By.id("singleFileInput"));
+        uploadFile.sendKeys(path);
+    }
 
- //Test Static Table
+    //Upload MultipleFiles
     @Test
-    public void TestStaticTable(){
-         int HeadsCount= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th")).size();
-         System.out.println("Number of TableHeads : " + HeadsCount);
+    public void UploadMultipleFile() {
+        String path1 = ("C:\\Users\\vinushi\\Downloads\\flower.jpg");
+        String path2 = ("C:\\Users\\vinushi\\Downloads\\flower1.jpg");
+        String path3 = ("C:\\Users\\vinushi\\Downloads\\flower2.jpg");
+        WebElement UploadMultipleFiles = driver.findElement(By.id("multipleFilesInput"));
+        UploadMultipleFiles.sendKeys(path1 + "\n" + path2 + "\n" + path3);
+    }
 
-        String TableValue=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]")).getText();
+    //Test Static Table
+    @Test
+    public void TestStaticTable() {
+        int HeadsCount = driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th")).size();
+        System.out.println("Number of TableHeads : " + HeadsCount);
+
+        String TableValue = driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]")).getText();
         System.out.println("Value is: " + TableValue);
 
         //Row Count in table
-       int RowCount= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr")).size();
-       System.out.println("Number of Rows: " + RowCount);
+        int RowCount = driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr")).size();
+        System.out.println("Number of Rows: " + RowCount);
 
-       //Column Count in the table
-        int ColumnCount= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th")).size();
+        //Column Count in the table
+        int ColumnCount = driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th")).size();
         System.out.println("Column Count is " + ColumnCount);
     }
-//Pagination WebTable
+
+    //Pagination WebTable
     @Test
-     public void paginationTable() throws InterruptedException {
-            int  Pagitabcolumns=driver.findElements(By.xpath("//table[@id='productTable']/thead/tr/th")).size();
-            System.out.println("Number of Table Columns: " +  Pagitabcolumns);
+    public void paginationTable() throws InterruptedException {
+        int Pagitabcolumns = driver.findElements(By.xpath("//table[@id='productTable']/thead/tr/th")).size();
+        System.out.println("Number of Table Columns: " + Pagitabcolumns);
 
-            int Pagitabrows=driver.findElements(By.xpath("//table[@id='productTable']/tbody/tr")).size();
-            System.out.println("Number of Rows :  " + Pagitabrows);
+        int Pagitabrows = driver.findElements(By.xpath("//table[@id='productTable']/tbody/tr")).size();
+        System.out.println("Number of Rows :  " + Pagitabrows);
 
 
-            //Retrieve all the data from table
+        //Retrieve all the data from table
 
-        for(int i=1;i< Pagitabrows;i++){//rows
-            for(int j=1; j< Pagitabcolumns;j++){
-               String tbldata= driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td["+j+"]")).getText();
-               System.out.println(tbldata + " ");
+        for (int i = 1; i < Pagitabrows; i++) {//rows
+            for (int j = 1; j < Pagitabcolumns; j++) {
+                String tbldata = driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr[" + i + "]/td[" + j + "]")).getText();
+                System.out.println(tbldata + " ");
             }
             System.out.println();
         }
 
         //Print id and name
 
-        for(int i=1;i<=Pagitabrows;i++){
-            String TableId= driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[1]")).getText();
-            String ProductName=driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[2]")).getText();
-            System.out.println("Table id : " + TableId + "Product Name is: " +  ProductName );
+        for (int i = 1; i <= Pagitabrows; i++) {
+            String TableId = driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr[" + i + "]/td[1]")).getText();
+            String ProductName = driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr[" + i + "]/td[2]")).getText();
+            System.out.println("Table id : " + TableId + "Product Name is: " + ProductName);
 
-        if(ProductName.equals("Product 3")){
-           String productPrice= driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[3]")).getText();
-           System.out.println(ProductName + " Price is : " +productPrice );
-           break;
-        }
+            if (ProductName.equals("Product 3")) {
+                String productPrice = driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr[" + i + "]/td[3]")).getText();
+                System.out.println(ProductName + " Price is : " + productPrice);
+                break;
+            }
 
         }
 
         //Select All checkBoxes
-             int pagecount= driver.findElements(By.xpath("//ul[@id='pagination']/li")).size();
-             List<WebElement> pages= driver.findElements(By.xpath("//ul[@id='pagination']/li"));
+        int pagecount = driver.findElements(By.xpath("//ul[@id='pagination']/li")).size();
+        List<WebElement> pages = driver.findElements(By.xpath("//ul[@id='pagination']/li"));
 
-             for(int k=0;k<pagecount;k++){
-                 pages.get(k).click();
-                 Thread.sleep(1000);
-                 for(int i=1;i<=Pagitabcolumns;i++){
-                     boolean att=driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[4]/input")).isSelected();
-                     if(!att){
-                         driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr["+i+"]/td[4]/input")).click();
-                         Thread.sleep(3000);
-                     }
-                 }
-             }
+        for (int k = 0; k < pagecount; k++) {
+            pages.get(k).click();
+            Thread.sleep(1000);
+            for (int i = 1; i <= Pagitabcolumns; i++) {
+                boolean att = driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr[" + i + "]/td[4]/input")).isSelected();
+                if (!att) {
+                    driver.findElement(By.xpath("//table[@id='productTable']/tbody/tr[" + i + "]/td[4]/input")).click();
+                    Thread.sleep(3000);
+                }
+            }
+        }
+    }
 
-    //
+        //Test Dynamic Table
+    @Test
+        public void TestDynamicWebTable() {
+        WebElement webTable=driver.findElement(By.xpath("//table[@id='taskTable']"));
+        List<WebElement> rows = webTable.findElements(By.tagName("tr"));
+        int rowcount = rows.size();
+        for (int i = 0; i < rowcount; i++) {
+            List<WebElement> columns = rows.get(i).findElements(By.tagName("td"));
+            int columcount = columns.size();
 
-     }
+            for (int j = 0; j < columcount; j++) {
+                String cellText = columns.get(j).getText();
+                if (cellText.equals("Chrome")) {
+                    System.out.println("CPU load of Chrome process : " + columns.get(2).getText());
+                }
+                if (cellText.equals("Firefox")){
+                    System.out.println("Memory Size of Firefox process: "+ columns.get(1).getText());
+                }
+                if(cellText.equals("Chrome")){
+                    System.out.println("Network speed of chrome process : " + columns.get(1).getText());
+                }
+                if(cellText.equals("Firefox")){
+                    System.out.println("Disk Space of Firefox process: " + columns.get(1).getText() );
 
+                }
+            }
+        }
+    }
+
+    //Test The Form
+    @Test
+    public void TestForm() throws InterruptedException {
+        WebElement Section1= driver.findElement(By.xpath("//input[@id='input1']"));
+        Section1.sendKeys("Hello World!!!!!!");
+        WebElement Btn1= driver.findElement(By.xpath("//button[@id='btn1']"));
+        Btn1.click();
+        Thread.sleep(3000);
+
+        WebElement Section2= driver.findElement(By.xpath("//input[@id='input2']"));
+        Section2.sendKeys("Hello!! How are You?");
+        WebElement Btn2= driver.findElement(By.xpath("//button[@id='btn2']"));
+        Btn2.click();
+        Thread.sleep(3000);
+
+
+        WebElement  Section3=driver.findElement(By.xpath("//input[@id='input3']"));
+        Section3.sendKeys("Hello!! My name is Ann. What is your name?");
+        WebElement Btn3=driver.findElement(By.xpath("//button[@id='btn3']"));
+        Btn3.click();
+    }
 }
+
+
+
+
+
