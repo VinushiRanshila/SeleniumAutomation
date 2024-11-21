@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
 public class Testautomationpractice {
@@ -192,10 +193,10 @@ public class Testautomationpractice {
         }
     }
 
-        //Test Dynamic Table
+    //Test Dynamic Table
     @Test
-        public void TestDynamicWebTable() {
-        WebElement webTable=driver.findElement(By.xpath("//table[@id='taskTable']"));
+    public void TestDynamicWebTable() {
+        WebElement webTable = driver.findElement(By.xpath("//table[@id='taskTable']"));
         List<WebElement> rows = webTable.findElements(By.tagName("tr"));
         int rowcount = rows.size();
         for (int i = 0; i < rowcount; i++) {
@@ -207,14 +208,14 @@ public class Testautomationpractice {
                 if (cellText.equals("Chrome")) {
                     System.out.println("CPU load of Chrome process : " + columns.get(2).getText());
                 }
-                if (cellText.equals("Firefox")){
-                    System.out.println("Memory Size of Firefox process: "+ columns.get(1).getText());
+                if (cellText.equals("Firefox")) {
+                    System.out.println("Memory Size of Firefox process: " + columns.get(1).getText());
                 }
-                if(cellText.equals("Chrome")){
+                if (cellText.equals("Chrome")) {
                     System.out.println("Network speed of chrome process : " + columns.get(1).getText());
                 }
-                if(cellText.equals("Firefox")){
-                    System.out.println("Disk Space of Firefox process: " + columns.get(1).getText() );
+                if (cellText.equals("Firefox")) {
+                    System.out.println("Disk Space of Firefox process: " + columns.get(1).getText());
 
                 }
             }
@@ -224,25 +225,141 @@ public class Testautomationpractice {
     //Test The Form
     @Test
     public void TestForm() throws InterruptedException {
-        WebElement Section1= driver.findElement(By.xpath("//input[@id='input1']"));
+        WebElement Section1 = driver.findElement(By.xpath("//input[@id='input1']"));
         Section1.sendKeys("Hello World!!!!!!");
-        WebElement Btn1= driver.findElement(By.xpath("//button[@id='btn1']"));
+        WebElement Btn1 = driver.findElement(By.xpath("//button[@id='btn1']"));
         Btn1.click();
         Thread.sleep(3000);
 
-        WebElement Section2= driver.findElement(By.xpath("//input[@id='input2']"));
+        WebElement Section2 = driver.findElement(By.xpath("//input[@id='input2']"));
         Section2.sendKeys("Hello!! How are You?");
-        WebElement Btn2= driver.findElement(By.xpath("//button[@id='btn2']"));
+        WebElement Btn2 = driver.findElement(By.xpath("//button[@id='btn2']"));
         Btn2.click();
         Thread.sleep(3000);
 
 
-        WebElement  Section3=driver.findElement(By.xpath("//input[@id='input3']"));
+        WebElement Section3 = driver.findElement(By.xpath("//input[@id='input3']"));
         Section3.sendKeys("Hello!! My name is Ann. What is your name?");
-        WebElement Btn3=driver.findElement(By.xpath("//button[@id='btn3']"));
+        WebElement Btn3 = driver.findElement(By.xpath("//button[@id='btn3']"));
         Btn3.click();
     }
+
+
+    ////Test Footer Link////
+    //1.Home Link
+    @Test
+    public void TestFooterLink() throws InterruptedException {
+        WebElement HomeLink = driver.findElement(By.linkText("Home"));
+        HomeLink.click();
+        Thread.sleep(3000);
+
+    }
+
+    //2.Hidden Elements Ajax//
+    //2.1Test Input Box
+    @Test
+    public void TestInputBox() {
+        WebElement HiddenElements = driver.findElement(By.linkText("Hidden Elements & AJAX"));
+        HiddenElements.click();
+        WebElement InputBox1 = driver.findElement(By.xpath(" //input[@id='input1']"));
+        InputBox1.sendKeys("Hello World!!");
+        WebElement ToggleInputBox2 = driver.findElement(By.xpath("//button[@id='toggleInput']"));
+        ToggleInputBox2.click();
+        WebElement InputBox2 = driver.findElement(By.xpath("//input[@id='input2']"));
+        InputBox2.sendKeys("Hello World!! Hello!!");
+        WebElement LoadStatus = driver.findElement(By.xpath("//span[@id='statusLabel']"));
+        String ShowStatus = LoadStatus.getText();
+        System.out.println("Status is " + ShowStatus);
+        WebElement GoHome = driver.findElement(By.linkText("Home"));
+        GoHome.click();
+    }
+
+    //2.2Test Toggle CheckBox
+    @Test
+    public void TestToggleCheckBox() {
+        WebElement HiddenElements = driver.findElement(By.linkText("Hidden Elements & AJAX"));
+        HiddenElements.click();
+        WebElement CheckBox1 = driver.findElement(By.xpath("//input[@id='checkbox1']"));
+        if (!CheckBox1.isSelected()) {
+            CheckBox1.click();
+        }
+        WebElement ToggleCheckBox = driver.findElement(By.xpath("//button[@id='toggleCheckbox']"));
+        ToggleCheckBox.click();
+        WebElement Checkbox2 = driver.findElement(By.xpath("//input[@id='checkbox2']"));
+        if (!Checkbox2.isSelected()) {
+            Checkbox2.click();
+        }
+
+        WebElement LoadStatus = driver.findElement(By.xpath("//span[@id='statusLabel']"));
+        String ShowStatus = LoadStatus.getText();
+        System.out.println("Status is " + ShowStatus);
+        WebElement GoHome = driver.findElement(By.linkText("Home"));
+        GoHome.click();
+
+    }
+
+    //2.3Test Content Load
+    @Test
+    public void TestContentLoad() throws InterruptedException {
+        WebElement HiddenElements = driver.findElement(By.linkText("Hidden Elements & AJAX"));
+        HiddenElements.click();
+        WebElement LoadContentButton = driver.findElement(By.xpath("//button[@id='loadContent']"));
+        LoadContentButton.click();
+        Thread.sleep(3000);
+        WebElement LoadStatus = driver.findElement(By.xpath("//span[@id='statusLabel']"));
+        String ShowStatus = LoadStatus.getText();
+        System.out.println("Status is " + ShowStatus);
+        WebElement GoHome = driver.findElement(By.linkText("Home"));
+        GoHome.click();
+    }
+
+
+    //3.Download Files//
+    @Test
+    public void DownloadFile() {
+        WebElement DownloadFiles = driver.findElement(By.linkText("Download Files"));
+        DownloadFiles.click();
+        WebElement TextArea = driver.findElement(By.xpath("//textarea[@id='inputText']"));
+        TextArea.sendKeys("Hello World!!!!");
+        WebElement GenerateDownloadTextFile1 = driver.findElement(By.xpath("//button[@id='generateTxt']"));
+        GenerateDownloadTextFile1.click();
+        WebElement TextDownloadLink=driver.findElement(By.xpath("//a[@id='txtDownloadLink']"));
+        TextDownloadLink.click();
+        WebElement GenerateandDownloadPdfFile2= driver.findElement(By.xpath("//[@id='generatePdf']"));
+        GenerateandDownloadPdfFile2.click();
+        WebElement DownloadPdfFIle= driver.findElement(By.xpath("//a[@id='pdfDownloadLink']"));
+        DownloadPdfFIle.click();
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
