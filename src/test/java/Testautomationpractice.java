@@ -1,7 +1,9 @@
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -329,9 +331,72 @@ public class Testautomationpractice {
         GenerateandDownloadPdfFile2.click();
         WebElement DownloadPdfFIle= driver.findElement(By.xpath("//a[@id='pdfDownloadLink']"));
         DownloadPdfFIle.click();
+    }
+
+    //Test Tabs
+    @Test
+    public void TestWekipedia() throws InterruptedException {
+        WebElement SearchBar= driver.findElement(By.xpath("//input[@id='Wikipedia1_wikipedia-search-input']"));
+        SearchBar.sendKeys("Colombo");
+        Thread.sleep(3000);
+
+
+
+        List<WebElement> searchResults = driver.findElements(By.xpath("//*[@id='Wikipedia1_wikipedia-search-results']"));
+        for (WebElement result : searchResults) {
+            if (result.getText().equals("Colombo")) {
+                result.click();
+                break;
+            }
+        }
+
+
+        }
+
+
+        //Test Alerts & Popups
+    @Test
+    public void TestAlerts() throws InterruptedException {
+
+        //1.Simple Alert
+        WebElement AlertBox=  driver.findElement(By.xpath("//button[@id='alertBtn']"));
+        AlertBox.click();
+        Alert alert=driver.switchTo().alert();
+        Thread.sleep(3000);
+        alert.accept();
+
+
+        //Confirmation Alert
+        WebElement ConfirmationAlert= driver.findElement(By.xpath("//button[@id='confirmBtn']"));
+        ConfirmationAlert.click();
+        Alert conAlert=  driver.switchTo().alert();
+        Thread.sleep(3000);
+        conAlert.dismiss();
+
+        //prompt Alert
+        WebElement PromptAlert=driver.findElement(By.xpath("//button[@id='promptBtn']"));
+        PromptAlert.click();
+        Alert proAlert=driver.switchTo().alert();
+        Thread.sleep(3000);
+        String AlertText= proAlert.getText();
+        System.out.println("Alert text is : " + AlertText );
+        proAlert.sendKeys("Annn Perera");
+        proAlert.accept();
 
     }
-}
+    @Test
+//Drag and Drop
+    public void TestDragandDrop(){
+        Actions actions=new Actions(driver);
+        WebElement From=driver.findElement(By.id("draggable"));
+        WebElement To=driver.findElement(By.id("droppable"));
+        actions.dragAndDrop(From,To).perform();
+    }
+
+
+
+    }
+
 
 
 
